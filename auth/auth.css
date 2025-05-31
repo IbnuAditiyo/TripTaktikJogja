@@ -1,3 +1,4 @@
+/* Reset dan pengaturan dasar */
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +7,11 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
+/* Latar belakang halaman dengan overlay gelap */
 .background {
     position: fixed;
     top: 0;
@@ -29,6 +32,7 @@ body {
     background: rgba(0, 0, 0, 0.3);
 }
 
+/* Header dan logo */
 .header {
     position: absolute;
     top: 20px;
@@ -43,6 +47,7 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Container utama */
 .container {
     display: flex;
     justify-content: center;
@@ -51,16 +56,19 @@ body {
     padding: 20px;
 }
 
+/* Kartu autentikasi */
 .auth-card {
     background: rgba(245, 255, 240, 0.7);
     backdrop-filter: blur(1px);
     border-radius: 20px;
     padding: 40px;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     box-shadow: 0 20px 40px rgba(90, 124, 58, 0.15);
     text-align: center;
 }
 
+/* Judul dan subjudul */
 .auth-title {
     font-size: 45px;
     color: #475d57;
@@ -76,6 +84,7 @@ body {
     font-size: 14px;
 }
 
+/* Formulir dan input */
 .form-group {
     margin-bottom: 20px;
 }
@@ -85,7 +94,7 @@ body {
     padding: 15px 20px;
     border: 2px solid #e0e0e0;
     border-radius: 50px;
-    font-size: 14px;
+    font-size: 16px;
     background: #F5FFF0B3;
     transition: all 0.3s ease;
     outline: none;
@@ -100,6 +109,7 @@ body {
     color: #475d57;
 }
 
+/* Tombol utama */
 .btn-primary {
     width: 100%;
     padding: 15px;
@@ -124,12 +134,14 @@ body {
     transform: translateY(0);
 }
 
+/* Divider teks */
 .divider {
     margin: 20px 0;
     color: #475d57;
     font-size: 14px;
 }
 
+/* Tombol login sosial media */
 .social-btn {
     width: 100%;
     padding: 12px;
@@ -142,7 +154,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
 }
@@ -162,6 +174,7 @@ body {
     color: #475d57;
 }
 
+/* Link antar halaman autentikasi */
 .auth-link {
     color: #475d57;
     font-size: 14px;
@@ -178,22 +191,7 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .auth-card {
-        margin: 20px;
-        padding: 30px 25px;
-    }
-
-    .auth-title, .welcome-title {
-        font-size: 36px;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-}
-
+/* Efek tombol saat loading */
 .btn-loading {
     opacity: 0.7;
     cursor: not-allowed;
@@ -211,7 +209,53 @@ body {
     animation: spin 1s linear infinite;
 }
 
+/* Animasi loading */
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsif untuk tablet */
+@media (max-width: 768px) {
+    .auth-card {
+        margin: 20px;
+        padding: 30px 25px;
+    }
+
+    .auth-title {
+        font-size: 36px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+}
+
+/* Responsif untuk layar kecil (ponsel) */
+@media (max-width: 480px) {
+    .auth-card {
+        width: 100%;
+        padding: 25px 15px;
+    }
+
+    .auth-title {
+        font-size: 28px;
+    }
+
+    .auth-subtitle {
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .form-input,
+    .social-btn {
+        font-size: 16px;
+    }
 }

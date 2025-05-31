@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendasi Wisata - Trip.Taktik</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="recommendation.css">
+</head>
+<body>
+    <!-- Header dan Navigasi -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../home/home.html" class="logo">Trip.Taktik</a>
+            
+            <nav class="nav-links">
+                <a href="../home/home.html">Home</a>
+                <a href="recommendation.html" class="active">Rekomendasi</a>
+                <a href="../about/about.html">About</a>
+                <a href="../wishlist/wishlist.html">Wishlist</a>
+            </nav>
+
+            <div class="user-actions">
+                <a href="../profile/profile.html" class="icon-btn" title="Profile">
+                    <i class="fas fa-user-circle fa-lg"></i>
+                </a>
+                <button class="icon-btn" title="Logout" onclick="logoutPage.logout()">
+                    <i class="fas fa-sign-out-alt fa-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Judul dan Filter -->
+        <div class="page-header-content">
+            <h1 class="page-title">Temukan Wisata Impianmu</h1>
+
+            <div class="filter-section-recom">
+                <div class="search-box-recom">
+                    <div class="filter-item-recom">
+                        <i class="fas fa-filter"></i>
+                        <select id="jenisWisataSelectRecom">
+                            <option value="">Pilih Jenis Wisata</option>
+                            <option value="alam">Wisata Alam</option>
+                            <option value="budaya">Wisata Budaya</option>
+                            <option value="kuliner">Wisata Kuliner</option>
+                            <option value="sejarah">Wisata Sejarah</option>
+                            <option value="pantai">Wisata Pantai</option>
+                            <option value="gunung">Wisata Gunung</option>
+                        </select>
+                    </div>
+
+                    <button class="search-btn-recom" id="searchRecommendationsBtn">
+                        Find Trip Now
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="main-content">
+        <!-- Pesan Awal -->
+        <div class="default-message" id="defaultMessage">
+            <div class="icon">🗺️</div>
+            <h2>Silahkan pilih jenis wisata yang anda sukai</h2>
+            <p>Gunakan filter di atas untuk mendapatkan rekomendasi wisata terbaik sesuai dengan preferensi Anda.</p>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loadingSection">
+            <div class="spinner"></div>
+            <p>Memproses rekomendasi wisata Anda...</p>
+        </div>
+
+        <!-- Hasil Rekomendasi -->
+        <div class="results-container" id="resultsContainer"></div>
+
+        <!-- Tombol Load More -->
+        <div class="load-more" id="loadMoreSection" style="display: none;">
+            <button class="load-more-btn" id="loadMoreBtn">Next Page →</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Trip.taktik</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, 
+                    lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Special Deals</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="#">Blog & Articles</a></li>
+                    <li><a href="#">Term and Condition</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact">
+                <h4>Contact</h4>
+                <p>Address: Jl.Codelaras No.205A</p>
+                <p>Kediri, Pare AG17</p>
+                <p>Phone: 123 456 7890</p>
+                <p>Email: agung@gmail.com</p>
+                <p>Maps: Kediri, East Java</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Ikuti Kami</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notifikasi -->
+    <div id="notification-container"></div>
+
+    <!-- Script JS -->
+    <script src="recommendation.js"></script>
+</body>
+</html>

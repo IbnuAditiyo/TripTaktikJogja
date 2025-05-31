@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip.Taktik - Wishlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+    <!-- Header dan navigasi utama -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../home/home.html" class="logo">Trip.Taktik</a>
+            <nav class="nav-menu">
+                <a href="../home/home.html" class="nav-link">Home</a>
+                <a href="../recommendation/recommendation.html" class="nav-link">Rekomendasi</a>
+                <a href="../about/about.html" class="nav-link">About</a>
+                <a href="wishlist.html" class="nav-link active">Wishlist</a>
+            </nav>
+            <div class="user-actions">
+                <a href="../profile/profile.html" class="icon-btn" title="Profile" style="text-decoration: none; color: white;">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+                <button class="icon-btn" title="Logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten utama wishlist -->
+    <main class="main-content">
+        <div class="wishlist-header">
+            <h1 class="wishlist-title">Wishlist Saya</h1>
+        </div>
+
+        <div id="wishlistContent"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Branding dan deskripsi -->
+            <div class="footer-brand">
+                <h3>Trip.Taktik</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, 
+                    lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel</p>
+            </div>
+
+            <!-- Link navigasi tambahan -->
+            <div class="footer-column">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Special Deals</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="../about/about.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Informasi layanan -->
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../about/about.html">About Us</a></li>
+                    <li><a href="#">Blog & Articles</a></li>
+                    <li><a href="#">Term and Condition</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Kontak -->
+            <div class="footer-column contact">
+                <h4>Contact</h4>
+                <p>Address: Jl. Codelaras No.205A</p>
+                <p>Kediri, Pare AG17</p>
+                <p>Phone: 123 456 7890</p>
+                <p>Email: agung@gmail.com</p>
+                <p>Maps: Kediri, East Java</p>
+            </div>
+
+            <!-- Media sosial -->
+            <div class="footer-column">
+                <h4>Ikuti Kami</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notifikasi (jika ada aksi pengguna) -->
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 1050;"></div>
+
+    <!-- Script JavaScript untuk wishlist -->
+    <script src="wishlist.js"></script>
+</body>
+</html>

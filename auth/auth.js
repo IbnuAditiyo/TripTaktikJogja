@@ -17,7 +17,7 @@ class AuthSystem {
     }
 
     bindEvents() {
-        // Login Form
+        // Event listener untuk form login
         const loginForm = document.getElementById('loginForm');
         if (loginForm) {
             loginForm.addEventListener('submit', (e) => {
@@ -26,7 +26,7 @@ class AuthSystem {
             });
         }
 
-        // Register Form
+        // Event listener untuk form registrasi
         const registerForm = document.getElementById('registerForm');
         if (registerForm) {
             registerForm.addEventListener('submit', (e) => {
@@ -40,18 +40,17 @@ class AuthSystem {
         const email = document.getElementById('loginEmail').value.trim();
         const password = document.getElementById('loginPassword').value;
         const loginBtn = document.getElementById('loginBtn');
-        const alertDiv = document.getElementById('loginAlert');
 
         if (!email || !password) {
             this.showAlert('loginAlert', 'Harap isi semua field', 'error');
             return;
         }
 
-        // Add loading state
+        // Tampilkan status loading
         loginBtn.classList.add('btn-loading');
         loginBtn.textContent = 'Signing In';
 
-        // Simulate API call delay
+        // Simulasi delay API
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         const user = this.users.find(u => u.email === email && u.password === password);
@@ -63,16 +62,14 @@ class AuthSystem {
                 username: user.username,
                 loginTime: new Date().toISOString()
             };
-            
+
             localStorage.setItem('tripTaktikCurrentUser', JSON.stringify(this.currentUser));
-            
-            // Redirect to home page file instead of showing home element
             this.redirectToHome();
         } else {
             this.showAlert('loginAlert', 'Email atau password salah', 'error');
         }
 
-        // Remove loading state
+        // Hapus status loading
         loginBtn.classList.remove('btn-loading');
         loginBtn.textContent = 'Log In';
     }
@@ -108,11 +105,11 @@ class AuthSystem {
             return;
         }
 
-        // Add loading state
+        // Tampilkan status loading
         registerBtn.classList.add('btn-loading');
         registerBtn.textContent = 'Creating Account';
 
-        // Simulate API call delay
+        // Simulasi delay API
         await new Promise(resolve => setTimeout(resolve, 1500));
 
         const newUser = {
@@ -127,53 +124,55 @@ class AuthSystem {
         localStorage.setItem('tripTaktikUsers', JSON.stringify(this.users));
 
         this.showAlert('registerSuccess', 'Akun berhasil dibuat! Silakan login.', 'success');
-        
-        // Clear form
+
+        // Reset form
         document.getElementById('registerForm').reset();
-        
-        // Auto redirect to login after 2 seconds
+
+        // Alihkan ke login dalam 2 detik
         setTimeout(() => {
             this.showLogin();
         }, 2000);
 
-        // Remove loading state
+        // Hapus status loading
         registerBtn.classList.remove('btn-loading');
         registerBtn.textContent = 'Register';
     }
 
-    // Method untuk redirect ke halaman home
+    // Redirect ke halaman home
     redirectToHome() {
         window.location.href = this.homePageUrl;
     }
 
+    // Tampilkan form login
     showLogin() {
         const loginPage = document.getElementById('loginPage');
         const registerPage = document.getElementById('registerPage');
-        
+
         if (loginPage) loginPage.style.display = 'flex';
         if (registerPage) registerPage.style.display = 'none';
-        
+
         this.clearAlerts();
     }
 
+    // Tampilkan form registrasi
     showRegister() {
         const loginPage = document.getElementById('loginPage');
         const registerPage = document.getElementById('registerPage');
-        
+
         if (loginPage) loginPage.style.display = 'none';
         if (registerPage) registerPage.style.display = 'flex';
-        
+
         this.clearAlerts();
     }
 
+    // Tampilkan halaman home jika elemen tersedia
     showHome() {
-        // Jika masih ada elemen home di halaman yang sama, sembunyikan
         const homePage = document.getElementById('homePage');
         if (homePage) {
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('registerPage').style.display = 'none';
             homePage.style.display = 'flex';
-            
+
             if (this.currentUser) {
                 const welcomeMessage = document.getElementById('welcomeMessage');
                 if (welcomeMessage) {
@@ -186,33 +185,32 @@ class AuthSystem {
                 }
             }
         } else {
-            // Jika tidak ada elemen home, redirect ke file
             this.redirectToHome();
         }
     }
 
+    // Logout user
     logout() {
         this.currentUser = null;
         localStorage.removeItem('tripTaktikCurrentUser');
-        
-        // Redirect ke halaman login
         window.location.href = 'auth.html';
     }
 
+    // Tampilkan pesan alert
     showAlert(alertId, message, type) {
         const alertDiv = document.getElementById(alertId);
         if (alertDiv) {
             alertDiv.textContent = message;
             alertDiv.className = `alert alert-${type}`;
             alertDiv.style.display = 'block';
-            
-            // Auto hide after 5 seconds
+
             setTimeout(() => {
                 alertDiv.style.display = 'none';
             }, 5000);
         }
     }
 
+    // Sembunyikan semua alert
     clearAlerts() {
         const alerts = document.querySelectorAll('.alert');
         alerts.forEach(alert => {
@@ -220,18 +218,19 @@ class AuthSystem {
         });
     }
 
+    // Validasi format email
     isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
-    // Method untuk update path home page
+    // Ubah URL halaman home
     setHomePageUrl(url) {
         this.homePageUrl = url;
     }
 }
 
-// Global Functions
+// Fungsi global untuk navigasi auth
 function showLogin() {
     window.authSystem.showLogin();
 }
@@ -244,22 +243,26 @@ function logout() {
     window.authSystem.logout();
 }
 
-// Initialize App
+// Inisialisasi sistem auth
 window.authSystem = new AuthSystem();
 
-// Add keyboard shortcuts
+// Shortcut keyboard: Ctrl + Enter untuk submit form aktif
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && e.ctrlKey) {
-        const activeForm = document.querySelector('form:not([style*="display: none"]) form, #loginPage:not([style*="display: none"]) form, #registerPage:not([style*="display: none"]) form');
+        const activeForm = document.querySelector(
+            'form:not([style*="display: none"]) form, ' +
+            '#loginPage:not([style*="display: none"]) form, ' +
+            '#registerPage:not([style*="display: none"]) form'
+        );
         if (activeForm) {
             activeForm.dispatchEvent(new Event('submit'));
         }
     }
 });
 
-// Handle browser back/forward
+// Event browser back/forward (kosong untuk future use)
 window.addEventListener('popstate', (e) => {
-    // Handle navigation state if needed
+    // Tambahkan navigasi state jika diperlukan
 });
 
 console.log('🚀 Trip.Taktik Authentication System Loaded');
